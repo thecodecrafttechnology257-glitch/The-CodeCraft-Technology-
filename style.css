@@ -490,11 +490,7 @@ h2 {
 #contact .copyright{
        text-align : center; 
 }
-   .url{
-       text-align : center; 
-   } 
-
-
+   
 @media (max-width: 1024px) {
   .hero,
   .about,
