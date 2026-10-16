@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">  
+     <link rel="stylesheet" href="contact.css"> 
+</head>
+<body>
+       <div id="header"></div> 
+  
+    <div id="header_contact">
+        <h1>CONTACT US</h1>
+    </div>
+  
+   <div id="contactMe">
+    <div class="address">
+        <br>
+        <h2>The CodeCraft Technology</h2>
+        <br>
+        <p><b>Plot No.</b> : XZ24, Bhuteswar Street</p><br>
+        <p><b>City</b> : Sikandra Rao, Hathras, UP</p><br>
+        <p>India - 204215</p><br>
+        <p><b>Phone</b> : +91 9821337127</p><br>
+        <p><b>Email</b> : thecodecrafttechnology257@gmail.com</p>
+    </div>
+    <div class="formInfo">
+        <form id="userform" novalidate>
+            <input type="hidden" name="access_key" id="web3forms-key" value="REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New Contact Form Submission - The CodeCraft Technology">
+            <input type="hidden" name="from_name" value="CodeCraft Contact Form">
+            <input type="hidden" name="to_email" value="thecodecrafttechnology257@gmail.com">
+            
+            <h2>Your Description</h2>
+            <br>
+            
+            <!-- Label aur Input ka connection id se hota hai -->
+            <label for="name">First Name</label>
+            <br>
+            <input type="text" name="name" id="name" class="name" autocomplete="given-name" placeholder="Enter your first name">
+            <br>
+            
+            <label for="lastname">Last Name</label>
+            <br>
+            <input type="text" name="lastname" id="lastname" class="lastname" autocomplete="family-name" placeholder="Enter your last name">
+            <br>
+            
+            <label for="mobile">Mobile No. :</label>
+            <br>
+            <input type="text" name="mobile" id="mobile" class="number" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number">
+            <br>
+            
+            <label for="email">Email :</label>
+            <br>
+            <input type="email" name="email" id="email" class="email" autocomplete="email" placeholder="yourname@example.com">
+            <br>
+            
+            <label for="message-box">Message-Box</label>
+            <br>
+            <textarea id="message-box" class="Message-Box" name="message" maxlength="500" placeholder="Write your message here..."></textarea>
+            <br>
+
+            <!-- Authentication: simple verification code -->
+            <label for="captcha-input">Verification Code *</label>
+            <br>
+            <div class="captcha-row">
+                <span id="captcha-question">0 + 0 = ?</span>
+                <input type="text" id="captcha-input" class="captcha-input" inputmode="numeric" autocomplete="off" placeholder="Enter code">
+                <button type="button" id="captcha-refresh" title="New code">&#8635;</button>
+            </div>
+            <span id="captcha-error" class="error-message"></span>
+            <span id="captcha-value" hidden></span>
+            <br>
+            
+            <button type="submit" class="submit">Submit</button>
+            <span id="form-success" class="form-success"></span>
+        </form> 
+    </div>
+    <div class="form_image">
+        <h3> <strong style="color:red">◀</strong> Leave a message, we will reply soon</h3>
+        <img src="IM-4.png" alt="image" id="reply_image">
+    </div>
+
+   </div>
+   <div class="bottom">
+    <p>All rights have resereved@The CodeCraft Technology</p>
+   </div>
+
+
+<script src="header.js"></script>
+<script src="contact.js"></script>
+</body>
+</html>
