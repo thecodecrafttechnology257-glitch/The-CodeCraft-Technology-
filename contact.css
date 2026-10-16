@@ -1,0 +1,213 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+#header_contact{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background:#fffff0;
+    justify-content: center;
+    align-items: center;
+}
+ 
+#header_contact h1{
+     color:red;
+     font-family: sans-serif;
+     font-size: 35px;
+     text-shadow: 1px 1px 1px #000;
+}
+#contactMe{
+    display: flex;
+    width: 100%;
+    height:auto;
+    background:#fffff0;
+    gap:60px; 
+    justify-content: center;
+    align-items: center;
+    padding:50px;
+}
+
+.address{
+     width:360px;
+     height:300px;
+     background:transparent;
+     border-radius: 12px;
+     color:#000;
+     text-align: left;
+     
+}
+
+.address p{
+     font-size: 20px;
+}
+
+.formInfo{
+      width: auto;
+      height:auto;
+      background:#5f9ca0;
+      border-radius: 12px;
+      justify-content: center;
+      display: flex;
+}
+
+#userform {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: auto; /* Height auto karna zaroori hai */
+    background: #f0fff0;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    border: 5px solid silver;
+    border-radius: 12px; 
+}
+
+#userform h2 {
+    color: red;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    padding-top: 20px;
+    opacity: 0.7;
+}
+
+.Message-Box {
+    width: 300px;
+    height: 130px;
+    padding: 5px; /* Textarea me thoda padding acha lagta hai */
+    font-family: inherit;
+}
+
+.name, .lastname, .number, .email {
+    width: 300px;
+    height: 35px;
+    padding: 5px; /* Input me padding */
+}
+
+label {
+    margin-right: auto;
+    padding: 0 30px;
+    font-weight: bold; /* Labels ko bold kiya */
+    color: #333;
+}
+
+.error-message {
+    color: #b00020;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 16px;
+    margin: 2px 0 4px 0;
+    padding: 0 30px;
+    text-align: left;
+    width: 300px;
+}
+
+#userform input.input-invalid,
+#userform textarea.input-invalid {
+    border: 2px solid #b00020;
+    outline: none;
+}
+
+#userform input.input-valid,
+#userform textarea.input-valid {
+    border: 2px solid green;
+    outline: none;
+}
+
+.captcha-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#captcha-question {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    background: #e8f5e9;
+    padding: 6px 10px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+}
+
+.captcha-input {
+    width: 70px;
+    height: 35px;
+    padding: 5px;
+    text-align: center;
+}
+
+#captcha-refresh {
+    height: 35px;
+    width: 35px;
+    border: none;
+    border-radius: 5px;
+    background: #5f9ca0;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#captcha-refresh:hover {
+    background: #4a7f82;
+}
+
+.form-success {
+    display: none;
+    margin-top: 12px;
+    padding: 10px;
+    width: 300px;
+    background: #e8f5e9;
+    color: green;
+    border: 1px solid green;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.submit {
+    width: 120px;
+    height: 30px;
+    background: green;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: darkgreen; /* Hover effect */
+}
+
+.form_image{
+       width:430px;
+       height:400px;
+       background:transparent; 
+       border-radius: 12px;
+}
+.form_image h3{
+     font-size: 23px;
+     margin-bottom: 20px;
+     font-weight: bolder;
+     color:#222;
+}
+
+#reply_image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.bottom{
+    width: 100%;
+    height: 30px;
+    background:#f0fff0;
+    color:#222;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
