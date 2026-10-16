@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("userform");
   if (!form) return;
 
+  const RECIPIENT = "thecodecrafttechnology257@gmail.com";
+  const ENDPOINT = "https://formsubmit.co/ajax/" + RECIPIENT;
+
   const els = {
     name: document.getElementById("name"),
     lastname: document.getElementById("lastname"),
@@ -14,19 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
     captchaError: document.getElementById("captcha-error"),
     captchaValue: document.getElementById("captcha-value"),
     success: document.getElementById("form-success"),
-    key: document.getElementById("web3forms-key"),
     submit: form.querySelector('button[type="submit"]')
   };
 
-  const PLACEHOLDER_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY";
-  const WHATSAPP = "919821337127";
-
   const honeypot = document.createElement("input");
-  honeypot.type = "checkbox";
-  honeypot.name = "botcheck";
+  honeypot.type = "text";
+  honeypot.name = "_honey";
   honeypot.tabIndex = -1;
   honeypot.hidden = true;
   honeypot.setAttribute("aria-hidden", "true");
+  honeypot.autocomplete = "off";
   form.appendChild(honeypot);
 
   const RULES = {
@@ -132,54 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
     els.submit.textContent = isLoading ? "Sending..." : "Submit";
   }
 
-  function enquiryText() {
-    return [
-      "*New Contact Form Enquiry*",
-      "First Name: " + els.name.value.trim(),
-      "Last Name: " + (els.lastname.value.trim() || "-"),
-      "Mobile: " + els.mobile.value.trim(),
-      "Email: " + els.email.value.trim(),
-      "Message: " + els.message.value.trim()
-    ].join("\n");
-  }
-
-  function sendToWhatsApp() {
-    const url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(enquiryText());
-    window.open(url, "_blank", "noopener");
-    form.reset();
-    clearStates();
-    newCaptcha();
-    showMessage("Thanks! Your enquiry is ready. Please press send in WhatsApp to reach us.", false);
-  }
-
-  function sendToWeb3Forms(key) {
-    setLoading(true);
-    return fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: new FormData(form)
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        if (data.success) {
-          form.reset();
-          clearStates();
-          newCaptcha();
-          showMessage("Thanks! Your message has been sent. We will reply soon.", false);
-        } else {
-          showMessage(data.message || "Something went wrong. Please try again.", true);
-        }
-      })
-      .catch(function () {
-        showMessage("Network error. Please check your connection and try again.", true);
-      })
-      .finally(function () {
-        setLoading(false);
-      });
-  }
-
   [els.name, els.lastname, els.mobile, els.email, els.message].forEach(function (field) {
     field.addEventListener("blur", function () {
       validateField(field);
@@ -209,18 +161,39 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (honeypot.checked) {
+    if (honeypot.value) {
       showMessage("Submission blocked. Please try again.", true);
       return;
     }
 
-    const key = (els.key.value || "").trim();
-    if (!key || key === PLACEHOLDER_KEY) {
-      sendToWhatsApp();
-      return;
-    }
+    const replyTo = document.getElementById("_replyto");
+    if (replyTo) replyTo.value = els.email.value.trim();
 
-    sendToWeb3Forms(key);
+    setLoading(true);
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(form)
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        if (String(data.success).toLowerCase() === "true") {
+          form.reset();
+          clearStates();
+          newCaptcha();
+          showMessage("Thanks! Your message has been sent. We will reply soon.", false);
+        } else {
+          showMessage(data.message || "Something went wrong. Please try again.", true);
+        }
+      })
+      .catch(function () {
+        showMessage("Network error. Please check your connection and try again.", true);
+      })
+      .finally(function () {
+        setLoading(false);
+      });
   });
 
   newCaptcha();
