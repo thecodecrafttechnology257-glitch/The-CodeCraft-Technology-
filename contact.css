@@ -218,3 +218,13 @@ label {
     display: flex;
     align-items: center;
 }
+
+@media (max-width:768px) {
+              
+          #contactMe{
+
+            display: flex;
+            flex-direction: column;
+          }
+
+}
