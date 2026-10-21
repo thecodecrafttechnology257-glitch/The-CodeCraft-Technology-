@@ -65,15 +65,6 @@ a {
   border-bottom: 1px solid var(--line);
 }
 
-/*#site-header {
-  position:sticky;
-  top: 0;
-  z-index: 50;
-  background:#2f4f4f;
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-}*/
-
 .header-inner {
   width: min(var(--max), calc(100% - 32px));
   margin: 0 auto;
