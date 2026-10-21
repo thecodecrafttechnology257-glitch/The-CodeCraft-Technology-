@@ -1,117 +1,151 @@
-*{
-    margin:0;
-    padding:0;
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-#header_contact{
+body {
+    font-family: Arial, sans-serif;
+    background: #fffff0;
+}
+
+/* =========================================================
+   HEADER & TITLE
+   ========================================================= */
+#header_contact {
     display: flex;
     width: 100%;
     height: 100px;
-    background:#fffff0;
+    background: #fffff0;
     justify-content: center;
     align-items: center;
 }
- 
-#header_contact h1{
-     color:red;
-     font-family: sans-serif;
-     font-size: 30px;
-     text-shadow: 1px 1px 1px #000;
+
+#header_contact h1 {
+    color: red;
+    font-family: sans-serif;
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #000;
 }
-#contactMe{
+
+/* =========================================================
+   MAIN LAYOUT CONTAINER
+   ========================================================= */
+#contactMe {
     display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
     width: 100%;
-    height:auto;
-    background:#fffff0;
-    gap:60px; 
+    height: auto;
+    background: #fffff0;
+    gap: 40px;
     justify-content: center;
-    align-items: center;
-    padding:50px;
+    align-items: flex-start; /* Aligns items to the top */
+    padding: 50px 20px;
 }
 
-.address{
-     width:360px;
-     height:300px;
-     background:transparent;
-     border-radius: 12px;
-     color:#000;
-     text-align: left;
-     
+/* =========================================================
+   LEFT SIDE: ADDRESS
+   ========================================================= */
+.address {
+    width: 100%;
+    max-width: 360px; /* Replaces fixed width */
+    height: auto;
+    background: transparent;
+    border-radius: 12px;
+    color: #000;
+    text-align: left;
 }
 
-.address h2{
-          font-size: 25px;
-          color:red;
-          text-shadow: 1px 1px 1px #000; 
+.address h2 {
+    font-size: 25px;
+    color: red;
+    text-shadow: 1px 1px 1px #000;
 }
 
-.address p{
-     font-size: 18px;
+.address p {
+    font-size: 18px;
+    line-height: 1.5;
 }
 
-.formInfo{
-      width: auto;
-      height:auto;
-      background:#5f9ca0;
-      border-radius: 12px;
-      justify-content: center;
-      display: flex;
+.address a {
+    color: #222;
+    text-decoration: none;
+}
+
+.address a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   MIDDLE: FORM CONTAINER
+   ========================================================= */
+.formInfo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    background: #5f9ca0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
 
 #userform {
     display: flex;
     flex-direction: column;
-    width: 370px;
-    height: auto; /* Height auto karna zaroori hai */
+    width: 100%;
+    height: auto;
     background: #f0fff0;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
+    padding: 20px 15px;
     border: 5px solid silver;
-    border-radius: 12px; 
+    border-radius: 12px;
 }
 
 #userform h2 {
     color: red;
     text-align: center;
     text-shadow: 1px 1px 1px #000;
-    padding-top: 20px;
     opacity: 0.7;
     font-size: 26px;
+    margin-bottom: 20px;
 }
 
-.Message-Box {
-    width: 300px;
-    height: 130px;
-    padding: 5px; /* Textarea me thoda padding acha lagta hai */
-    font-family: inherit;
-}
-
-.name, .lastname, .number, .email {
-    width: 300px;
-    height: 35px;
-    padding: 5px; /* Input me padding */
-}
-
+/* Form Labels */
 label {
-    margin-right: auto;
-    padding: 0 30px;
-    font-weight: bold; /* Labels ko bold kiya */
+    width: 100%;
+    max-width: 300px;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
     color: #333;
 }
 
-.error-message {
-    color: #b00020;
-    font-size: 13px;
-    font-weight: bold;
-    min-height: 16px;
-    margin: 2px 0 4px 0;
-    padding: 0 30px;
-    text-align: left;
-    width: 300px;
+/* Form Inputs */
+.name, .lastname, .number, .email, .Message-Box {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    margin-bottom: 10px; /* Space between fields */
 }
 
+.number {
+    height: 38px;
+}
+
+.Message-Box {
+    height: 120px;
+    resize: vertical; /* User can resize vertically only */
+}
+
+/* Validation States */
 #userform input.input-invalid,
 #userform textarea.input-invalid {
     border: 2px solid #b00020;
@@ -124,10 +158,29 @@ label {
     outline: none;
 }
 
+/* Error Messages */
+.error-message {
+    width: 100%;
+    max-width: 300px;
+    color: #b00020;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 16px;
+    text-align: left;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+/* Captcha Section */
 .captcha-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 5px;
 }
 
 #captcha-question {
@@ -141,10 +194,12 @@ label {
 }
 
 .captcha-input {
-    width: 70px;
+    width: 80px;
     height: 35px;
     padding: 5px;
     text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 #captcha-refresh {
@@ -156,17 +211,22 @@ label {
     color: #fff;
     font-size: 18px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #captcha-refresh:hover {
     background: #4a7f82;
 }
 
+/* Success Message */
 .form-success {
     display: none;
-    margin-top: 12px;
+    margin-top: 15px;
     padding: 10px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     background: #e8f5e9;
     color: green;
     border: 1px solid green;
@@ -175,66 +235,162 @@ label {
     text-align: center;
 }
 
+/* Submit Button */
 .submit {
-    width: 120px;
-    height: 30px;
+    width: 150px;
+    height: 40px;
     background: green;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background 0.3s ease;
 }
 
 .submit:hover {
-    background: darkgreen; /* Hover effect */
+    background: darkgreen;
 }
 
-.form_image{
-       width:430px;
-       height:400px;
-       background:transparent; 
-       border-radius: 12px;
-}
-.form_image h3{
-     font-size: 23px;
-     margin-bottom: 20px;
-     font-weight: bolder;
-     color:#222;
-}
-
-#reply_image{
+/* =========================================================
+   RIGHT SIDE: IMAGE
+   ========================================================= */
+.form_image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 430px;
+    height: auto;
+    background: transparent;
     border-radius: 12px;
 }
 
-.bottom{
+.form_image h3 {
+    font-size: 23px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    color: #222;
+    text-align: center;
+}
+
+#reply_image {
     width: 100%;
-    height: 30px;
-    background:#f0fff0;
-    color:#222;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.bottom {
+    width: 100%;
+    height: auto;
+    padding: 15px 10px;
+    background: #f0fff0;
+    color: #222;
     justify-content: center;
     display: flex;
     align-items: center;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
 }
 
-#header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background:#2f4f4f;
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-} 
+/* =========================================================
+   MEDIA QUERIES (RESPONSIVE DESIGN)
+   ========================================================= */
 
+/* --- Tablets & Small Laptops (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    #contactMe {
+        gap: 30px;
+        padding: 40px 20px;
+    }
+    
+    .address {
+        text-align: center; /* Center text for better look */
+    }
 
-@media (max-width:768px) {
-              
-          #contactMe{
+    /* Optional: Adjust image max-width */
+    .form_image {
+        max-width: 500px;
+    }
+}
 
-            display: flex;
-            flex-direction: column;
-          }
+/* --- Mobile Devices (max-width: 768px) --- */
+@media (max-width: 768px) {
+    #contactMe {
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+        padding: 30px 15px;
+    }
 
+    #header_contact {
+        height: 80px;
+    }
+
+    #header_contact h1 {
+        font-size: 26px;
+    }
+
+    .address {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .formInfo {
+        max-width: 100%;
+        padding: 5px;
+    }
+
+    #userform {
+        width: 100%;
+        border-width: 3px; /* Thinner border on mobile */
+    }
+
+    .form_image {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .form_image h3 {
+        font-size: 20px;
+    }
+}
+
+/* --- Small Phones (max-width: 400px) --- */
+@media (max-width: 400px) {
+    .address p {
+        font-size: 16px;
+    }
+
+    #userform h2 {
+        font-size: 22px;
+    }
+
+    .name, .lastname, .number, .email, .Message-Box, label, .error-message {
+        max-width: 100%; /* Take full width of the padding container */
+    }
+
+    .captcha-row {
+        justify-content: center; /* Center captcha on very small screens */
+    }
+
+    #captcha-question {
+        font-size: 16px;
+        padding: 5px 8px;
+    }
+
+    .captcha-input {
+        width: 70px;
+    }
+    
+    .submit {
+        width: 100%; /* Full width button on small phones */
+        max-width: 200px;
+    }
 }
