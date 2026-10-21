@@ -219,6 +219,16 @@ label {
     align-items: center;
 }
 
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background:#2f4f4f;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+} 
+
+
 @media (max-width:768px) {
               
           #contactMe{
