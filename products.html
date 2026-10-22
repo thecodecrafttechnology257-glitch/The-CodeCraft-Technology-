@@ -16,7 +16,35 @@
 <body class="products-page">
 <div id="header"></div> 
   <a class="skip-link" href="#main">Skip to content</a>
-   <button type="button" class="cart-btn" data-open-cart aria-label="Open shopping cart">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><img src="IMLH.png" alt="The CodeCraft Technology logo"></span>
+        <span class="brand-text">
+          <strong>The CodeCraft</strong>
+          <span>Technology</span>
+        </span>
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <div class="header-actions">
+        <nav class="menu" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="products.html" aria-current="page">Products</a></li>
+            <li><a href="index.html#partners">Partners</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button type="button" class="cart-btn" data-open-cart aria-label="Open shopping cart">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="9" cy="20" r="1.5"></circle>
             <circle cx="18" cy="20" r="1.5"></circle>
@@ -24,6 +52,9 @@
           </svg>
           <span class="cart-count" id="cart-count" data-empty="true">0</span>
         </button>
+      </div>
+    </div>
+  </header>
   <section class="products-hero">
     <div>
       <p class="eyebrow">Ready to ship</p>
