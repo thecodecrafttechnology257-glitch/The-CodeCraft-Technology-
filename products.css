@@ -604,3 +604,71 @@
     width: 100%;
   }
 }
+
+/* CORRECTION FOR TOGGLE MENU */
+
+@media (max-width: 768px) {
+
+.site-header .header-inner {
+position: relative;
+}
+
+.site-header .header-actions {
+margin-left: auto;
+}
+
+.site-header .header-actions .menu {
+position: absolute;
+top: 72px;
+left: 0;
+right: 0;
+width: 100%;
+z-index: 1001;
+}
+
+/* Show navigation when the checkbox is checked */
+.site-header .nav-toggle:checked ~ .header-actions {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+}
+
+.site-header .nav-toggle:checked ~ .header-actions .menu {
+display: block;
+}
+
+.site-header .header-actions .menu ul {
+display: flex;
+flex-direction: column;
+width: 100%;
+margin: 0;
+padding: 12px;
+background: #2f4f4f;
+}
+
+.site-header .header-actions .menu li {
+width: 100%;
+}
+
+.site-header .header-actions .menu a {
+display: block;
+padding: 12px;
+}
+
+.site-header .cart-btn {
+align-self: flex-end;
+margin: 8px 12px;
+}
+
+.products-hero,
+.product-grid,
+.hero-stats {
+grid-template-columns: 1fr;
+}
+
+.product-panel,
+.cart-drawer {
+width: 100%;
+}
+}
+
