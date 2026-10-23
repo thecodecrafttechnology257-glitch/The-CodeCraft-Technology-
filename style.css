@@ -295,7 +295,7 @@ section {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-
+  color:#fff;
   margin-bottom: 12px;
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 }
@@ -355,13 +355,13 @@ section {
   align-items: center;
   justify-content: center;
 
-  min-height: 42px;
+  min-height: 27px;
   padding: 10px 20px;
 
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: 17px;
 
-  font-size: 0.92rem;
+  font-size: 0.99rem;
   font-weight: 700;
 
   text-decoration: none;
@@ -380,7 +380,9 @@ section {
 .btn-primary {
   background: var(--gold);
   color: #111;
+  
 }
+
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
@@ -391,6 +393,7 @@ section {
 .btn-ghost {
   background: var(--cyan);
   color: #062b2b;
+  height: 24px;
 }
 
 .btn-ghost:hover,
@@ -436,7 +439,7 @@ section {
 
   margin: 0 auto 48px;
 
-  height: 300px;
+  height: 350px;
 }
 
 .banner img {
@@ -499,7 +502,7 @@ section {
   font-size: clamp(1.5rem, 2.6vw, 2rem);
   margin-bottom: 16px;
 
-  text-shadow: 1px 1px 2px blue;
+  text-shadow: 1px 1px 2px gold;
 }
 
 /* =========================
@@ -634,9 +637,9 @@ section {
   color: var(--text);
 
   font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.0rem, 2.0vw, 1.5rem);
 
-  text-shadow: 2px 2px 2px blue;
+  text-shadow: 2px 2px 2px #000;
 }
 
 /* =========================
@@ -795,14 +798,18 @@ section {
 .contact-panel > .eyebrow {
   display: inline-block;
   margin-bottom: 12px;
+  font-size: larger;
+  text-shadow: 0.5px 0.5px 1px #fff;
+  font-weight: 2000;
+  color:red;
 }
 
 .contact-panel h2 {
   margin-bottom: 20px;
 
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 
-  text-shadow: 2px 2px 2px blue;
+  text-shadow: 2px 2px 2px #000;
 }
 
 .contact-list {
@@ -822,7 +829,7 @@ section {
 
   color: var(--gold);
 
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 800;
 
   letter-spacing: 0.06em;
@@ -833,7 +840,7 @@ section {
 .contact-list strong {
   color: var(--text);
 
-  font-size: 0.92rem;
+  font-size: 0.99rem;
   font-weight: 600;
 
   text-decoration: none;
@@ -1084,8 +1091,7 @@ section {
   /* Mission and Vision */
 
   .mission-grid {
-    grid-template-columns: minmax(0, 1fr);
-
+    grid-template-columns: minmax(0 ,1fr);
     gap: 14px;
     width: 100%;
   }
@@ -1094,6 +1100,7 @@ section {
     width: 100%;
     min-width: 0;
     padding: 16px;
+    
   }
 
   .mission-grid p {
@@ -1164,7 +1171,7 @@ section {
 
   .footer-visual {
     min-height: 0;
-  }
+      } 
 
   .footer-visual img {
     width: 100%;
