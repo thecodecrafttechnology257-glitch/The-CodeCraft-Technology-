@@ -1,3 +1,14 @@
+```css
+/* =========================================================
+   THE CODECRAFT TECHNOLOGY
+   Complete Responsive Stylesheet
+   Desktop | Tablet | Mobile
+========================================================= */
+
+/* =========================
+   1. CSS RESET & VARIABLES
+========================= */
+
 *,
 *::before,
 *::after {
@@ -7,68 +18,126 @@
 }
 
 :root {
-  --bg: #0c1014;
+  --bg: #008b8b;
   --surface: #151b22;
-  --surface-2: #1c242e;
-  --line: rgba(212, 175, 55, 0.22);
-  --gold: #d4af37;
-  --gold-soft: #f0d78c;
-  --cyan: #3ec8d8;
+  --surface-2: #087c7c;
+  --card-bg: #2f4f4f;
+  --footer-bg: #2f4f4f;
+
+  --gold: #ffb000;
+  --gold-soft: #ffd166;
+  --cyan: #00e5e5;
+
   --text: #f3f5f7;
-  --muted: #a8b0ba;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-  --radius: 16px;
+  --muted: #d4e5e5;
+
+  --line: rgba(255, 176, 0, 0.35);
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+
+  --radius: 12px;
   --max: 1180px;
 }
 
+/* =========================
+   2. GLOBAL STYLES
+========================= */
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
 }
 
 body {
   font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-  background: #008b8b;   var(--bg);
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  min-width: 320px;
+  overflow-wrap: break-word;
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 a {
   color: inherit;
 }
 
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+p {
+  overflow-wrap: anywhere;
+}
+
+section {
+  scroll-margin-top: 85px;
+}
+
+/* =========================
+   3. ACCESSIBILITY
+========================= */
+
 .skip-link {
   position: absolute;
   left: 12px;
-  top: -40px;
+  top: -60px;
+  z-index: 1000;
+
   background: var(--gold);
   color: #111;
-  padding: 8px 12px;
-  z-index: 100;
+
+  padding: 10px 14px;
+  border-radius: 6px;
+
   font-weight: 700;
+  text-decoration: none;
 }
 
 .skip-link:focus {
   top: 12px;
 }
 
+/* =========================
+   4. HEADER & NAVIGATION
+========================= */
+
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background:#2f4f4f;
-  backdrop-filter: blur(12px);
+  z-index: 100;
+
+  background: var(--footer-bg);
   border-bottom: 1px solid var(--line);
+
+  backdrop-filter: blur(12px);
 }
 
 .header-inner {
-  width: min(var(--max), calc(100% - 32px));
-  margin: 0 auto;
+  width: min(var(--max), calc(100% - 48px));
   min-height: 72px;
+
+  margin-inline: auto;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,79 +147,132 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brand-mark {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+
   display: grid;
   place-items: center;
+
   border: 1px solid var(--cyan);
-  color: var(--cyan);
   border-radius: 10px;
-  font-weight: 800;
-  letter-spacing: -1px;
+
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .brand-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .brand-text strong {
   font-size: 0.95rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 .brand-text span {
+  color: var(--gold);
+
   font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: orange;
- font-weight : bold;
 }
+
+/* Desktop Navigation */
 
 .menu ul {
   display: flex;
+  align-items: center;
+  gap: 6px;
+
   list-style: none;
-  gap: 8px;
 }
 
 .menu a {
   display: block;
-  padding: 8px 14px;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  font-size: 0.97rem;
+
+  padding: 9px 13px;
+
   border-radius: 999px;
-  transition: 0.2s ease;
+
+  color: var(--text);
+  text-decoration: none;
+
+  font-size: 0.92rem;
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .menu a:hover,
 .menu a:focus-visible {
-  color: var(--bg);
-  background: gold; var(--gold);
+  color: #111;
+  background: var(--gold);
+  outline: none;
+}
+
+/* Hamburger Button */
+
+.nav-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nav-toggle-btn {
   display: none;
+
   width: 42px;
   height: 42px;
-  place-items: center;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   gap: 5px;
+
+  border: 1px solid var(--line);
+  border-radius: 8px;
+
   cursor: pointer;
 }
 
 .nav-toggle-btn span {
   display: block;
+
   width: 22px;
   height: 2px;
+
   background: var(--text);
+  border-radius: 2px;
 }
+
+.nav-toggle:focus-visible + .nav-toggle-btn {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* =========================
+   5. COMMON CONTAINERS
+========================= */
 
 .hero,
 .about,
@@ -158,236 +280,413 @@ a {
 .partners,
 .footer-grid,
 .copyright {
-  width: min(var(--max), calc(100% - 32px));
+  width: min(var(--max), calc(100% - 48px));
   margin-inline: auto;
 }
 
-.hero {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 40px;
-  align-items: center;
-  padding: 64px 0 48px;
-}
+/* =========================
+   6. SECTION LABELS
+========================= */
 
 .eyebrow {
-  color: red;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  color: #ff4747;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+
   margin-bottom: 12px;
-  text-shadow : 1px 0px 0px #ffff; 
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 }
 
-h1,
-h2,
-h3 {
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+/* =========================
+   7. HERO SECTION
+========================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+
+  align-items: center;
+  gap: 40px;
+
+  padding-top: 56px;
+  padding-bottom: 42px;
 }
 
- h1 {
+.hero-copy {
+  min-width: 0;
+}
+
+.hero h1 {
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+
   font-size: clamp(2rem, 4vw, 3.4rem);
-  margin-bottom: 16px;
-  font-family : sans-serif;
- text-shadow : 2px 1px 0px #000;
-}
+  font-weight: 800;
 
-h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  margin-bottom: 20px;
- 
+  margin-bottom: 16px;
+
+  text-shadow: 2px 1px 0 rgba(0, 0, 0, 0.65);
 }
 
 .lede {
-  color: #fff; var(--muted);
-  font-size: 1.08rem;
-  max-width: 38ch;
-  margin-bottom: 28px;
+  max-width: 48ch;
+
+  color: var(--text);
+  font-size: 1rem;
+
+  margin-bottom: 24px;
 }
 
 .hero-actions {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 12px;
 }
+
+/* =========================
+   8. BUTTONS
+========================= */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 22px;
+
+  min-height: 42px;
+  padding: 10px 20px;
+
+  border: 1px solid transparent;
   border-radius: 999px;
-  text-decoration: none;
+
+  font-size: 0.92rem;
   font-weight: 700;
-  transition: 0.2s ease;
+
+  text-decoration: none;
+  text-align: center;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary {
-  background: orange;
-  color: #000; #16120a;
+  background: var(--gold);
+  color: #111;
 }
 
-.btn-primary:hover {
-  background: gold;
-  color:navy;
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--gold-soft);
+  color: #111;
 }
 
 .btn-ghost {
-  border: 1px solid var(--line);
-  color: #000; var(--text);
-  background:aqua;
+  background: var(--cyan);
+  color: #062b2b;
 }
 
-.btn-ghost:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: #a0ffff;
+  color: #062b2b;
 }
+
+/* =========================
+   9. IMAGE CONTAINERS
+========================= */
 
 .hero-visual,
 .about-visual,
 .footer-visual,
 .banner {
-  border-radius: var(--radius);
+  min-width: 0;
+
   overflow: hidden;
-  box-shadow: var(--shadow);
+
   border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
 }
 
 .hero-visual img,
-.about-visual img,
-.footer-visual img,
-.banner img {
+.footer-visual img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.banner {
-  width: min(var(--max), calc(100% - 32px));
-  margin: 0 auto 56px;
-  height: 320px;
+.hero-visual {
+  min-height: 200px;
 }
+
+/* Full-width banner */
+
+.banner {
+  width: min(var(--max), calc(100% - 48px));
+
+  margin: 0 auto 48px;
+
+  height: 300px;
+}
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   10. ABOUT SECTION
+========================= */
 
 .about {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 36px;
+
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(0, 0.85fr);
+
   align-items: start;
-  padding-bottom: 72px;
+  gap: 32px;
+
+  padding-bottom: 64px;
 }
 
-.about-copy h2{
-                      text-shadow : 1px 1px  blue;
-                      color: #fff; 
-             }
+.about-copy,
+.about-visual {
+  min-width: 0;
+  width: 100%;
+}
 
-.about-copy p{
-             color : white;
-             border: 2px solid orange;
-             width: 20%;
-            text-align : center;
-            border-radius : 10px; 
-    }
+/* About Us label */
+
+.about-copy .about-label {
+  display: inline-block;
+
+  width: auto;
+
+  margin-bottom: 12px;
+  padding: 3px 10px;
+
+  color: var(--text);
+
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+
+  text-align: center;
+  white-space: normal;
+}
+
+/* About heading */
+
+.about-copy h2 {
+  color: var(--text);
+
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  margin-bottom: 16px;
+
+  text-shadow: 1px 1px 2px blue;
+}
+
+/* =========================
+   11. COMPANY INFORMATION
+========================= */
+
 .about-facts {
   display: grid;
-  gap: 16px;
-  margin: 8px 0 28px;
+  gap: 12px;
+
+  margin: 8px 0 24px;
 }
 
-.about-facts div {
-  background: teal;  var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
+.about-facts > div {
+  min-width: 0;
+
   padding: 14px 16px;
-  border-top : 1px solid #000;
+
+  background: var(--surface-2);
+
+  border: 1px solid var(--line);
+  border-top: 1px solid #064d4d;
+
+  border-radius: 9px;
 }
 
 .about-facts dt {
+  margin-bottom: 5px;
+
   color: var(--gold);
+
   font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 800;
+
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 4px;
 }
 
 .about-facts dd {
   color: var(--text);
+
+  font-size: 0.93rem;
+  line-height: 1.65;
+
+  overflow-wrap: anywhere;
 }
+
+/* =========================
+   12. MISSION & VISION
+========================= */
 
 .mission-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 16px;
+  width: 100%;
 }
 
 .mission-grid article {
-  background: teal; var(--surface-2);
-  border-radius: 12px;
+  min-width: 0;
+  width: 100%;
+
   padding: 18px;
+
+  background: var(--surface-2);
+
   border-top: 3px solid var(--gold);
- border-bottom :1px solid navy;
+  border-bottom: 1px solid navy;
+
+  border-radius: 10px;
+
+  overflow-wrap: anywhere;
 }
 
 .mission-grid h3 {
   color: var(--gold);
+
   font-size: 1rem;
   margin-bottom: 8px;
-
 }
 
-.mission-grid p{
-                  border:none;
-                  width: auto;
-                  text-align:left;        
-          }
-.mission-grid p,
-.partner-card p {
-  color:#fff; var(--muted);
-  font-size: 0.95rem;
- 
+.mission-grid p {
+  color: var(--text);
+
+  font-size: 0.92rem;
+  line-height: 1.65;
+
+  overflow-wrap: anywhere;
 }
+
+/* =========================
+   13. ABOUT GIF VISUAL
+========================= */
+
+.about-visual {
+  height: auto;
+  align-self: start;
+
+  overflow: hidden;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+
+  box-shadow: var(--shadow);
+}
+
+.about-visual img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* =========================
+   14. SECTION HEADINGS
+========================= */
 
 .section-head {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-.section-head h2{
-                  font-family:sans-serif;
-                  text-shadow : 2px 2px 2px blue;
-                  font-size : 25px; 
- } 
-.service-grid,
-.partner-grid {
-  display: grid;
-  gap: 20px;
+.section-head .eyebrow {
+  margin-bottom: 8px;
+}
+
+.section-head h2 {
+  color: var(--text);
+
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+
+  text-shadow: 2px 2px 2px blue;
+}
+
+/* =========================
+   15. SERVICES SECTION
+========================= */
+
+.services {
+  padding-bottom: 8px;
 }
 
 .service-grid {
-  grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 72px;
-  cursor:pointer; 
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+
+  padding-bottom: 56px;
 }
 
-.card,
-.partner-card {
-  background: #2f4f4f; var(--surface);
-  border: 1px solid var(--line);
+.card {
+  min-width: 0;
+
+  padding: 24px;
+
+  background: var(--card-bg);
+
+  border: 1px solid rgba(255, 176, 0, 0.18);
   border-radius: var(--radius);
-  padding: 28px 24px;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.card:hover,
-.partner-card:hover {
+.card:hover {
   transform: translateY(-4px);
-  border-color: 5px 5px 5px var(--gold);
+  border-color: var(--gold);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+
+  color: var(--gold);
+  font-size: 1.05rem;
 }
 
 .card h3 a {
-  color: orange; var(--gold);
+  color: var(--gold);
   text-decoration: none;
 }
 
@@ -397,57 +696,113 @@ h2 {
 
 .card ul {
   list-style: none;
-  margin-top: 18px;
+  margin-top: 8px;
 }
 
 .card li {
-  color: #fff;  var(--muted);
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  color: var(--text);
+  font-size: 0.92rem;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .card li:last-child {
-  border-bottom: 0;
+  border-bottom: none;
+}
+
+/* =========================
+   16. SECTORS SECTION
+========================= */
+
+.partners {
+  padding-bottom: 8px;
 }
 
 .partner-grid {
-  grid-template-columns: repeat(4, 1fr);
-  padding-bottom: 72px;
-  cursor:pointer; 
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  padding-bottom: 56px;
+}
+
+.partner-card {
+  min-width: 0;
+
+  padding: 20px;
+
+  background: var(--card-bg);
+
+  border: 1px solid rgba(255, 176, 0, 0.18);
+  border-radius: var(--radius);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
 }
 
 .partner-card h3 {
   margin-bottom: 8px;
-  color: orange; 
+
+  color: var(--gold);
+  font-size: 1rem;
 }
+
+.partner-card p {
+  color: var(--text);
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   17. FOOTER
+========================= */
 
 .footer {
-  background:#2f4f4f;  #0a0d11;
+  background: var(--footer-bg);
+
   border-top: 1px solid var(--line);
-  padding: 56px 0 24px;
+
+  padding: 44px 0 20px;
 }
 
-.contact-panel h2{
-             text-shadow : 2px 2px 2px blue;
-             font-size : 24px;
-     }
-
-.contact-panel p{
-                      color: red;
-                      border: none;
-                      width: 35%;
-                      text-align : center;
-                     border-radius : 10px; 
-                     font-family : sans-serif;
-                     font-weight: bold;
-                     background : transparent; 
-                     text-shadow : 0.5px 0px 0px white;
-            }
 .footer-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 28px;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
   align-items: stretch;
+  gap: 32px;
+}
+
+.contact-panel {
+  min-width: 0;
+}
+
+.contact-panel > .eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.contact-panel h2 {
+  margin-bottom: 20px;
+
+  font-size: 1.6rem;
+
+  text-shadow: 2px 2px 2px blue;
 }
 
 .contact-list {
@@ -457,102 +812,460 @@ h2 {
 
 .contact-list li {
   margin-bottom: 16px;
+  min-width: 0;
 }
 
-.contact-list span {
+.contact-list li > span {
   display: block;
+
+  margin-bottom: 4px;
+
   color: var(--gold);
+
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 800;
+
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .contact-list a,
 .contact-list strong {
   color: var(--text);
-  text-decoration: none;
+
+  font-size: 0.92rem;
   font-weight: 600;
+
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
 }
 
 .contact-list a:hover {
-  color: var(--gold);
+  color: var(--gold-soft);
 }
+
+.footer-visual {
+  min-height: 220px;
+}
+
+.footer-visual img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* =========================
+   18. COPYRIGHT
+========================= */
 
 .copyright {
-  margin-top: 28px;
+  margin-top: 24px;
   padding-top: 18px;
+
   border-top: 1px solid var(--line);
+
   color: var(--muted);
-  font-size: 0.85rem;
+
+  font-size: 0.82rem;
+  text-align: center;
 }
 
-#contact .copyright{
-       text-align : center; 
-   } 
+/* =========================
+   19. TABLET RESPONSIVENESS
+========================= */
 
 @media (max-width: 1024px) {
+
+  .header-inner,
   .hero,
   .about,
-  .footer-grid {
-    grid-template-columns: 1fr;
+  .services,
+  .partners,
+  .footer-grid,
+  .copyright {
+    width: calc(100% - 40px);
+  }
+
+  .hero {
+    gap: 28px;
+  }
+
+  .about {
+    gap: 24px;
+  }
+
+  .service-grid {
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .partner-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 
   .banner {
-    height: 220px;
-  }
-
-  .service-grid,
-  .partner-grid,
-  .mission-grid {
-    grid-template-columns: 1fr 1fr;
+    width: calc(100% - 40px);
+    height: 240px;
   }
 }
 
+/* =========================
+   20. MOBILE NAVIGATION
+========================= */
+
 @media (max-width: 768px) {
+
+  .header-inner {
+    width: calc(100% - 28px);
+    min-height: 64px;
+    gap: 12px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-text strong {
+    font-size: 0.85rem;
+  }
+
+  .brand-text span {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+  }
+
   .nav-toggle-btn {
-    display: grid;
+    display: flex;
+    flex-shrink: 0;
   }
 
   .menu {
     position: absolute;
+
+    top: 100%;
     left: 0;
     right: 0;
-    top: 72px;
-    background: var(--surface);
-    border-bottom: 1px solid var(--line);
+
     display: none;
+
+    background: var(--footer-bg);
+
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
   }
+
+  /* Checkbox controls the mobile menu */
 
   .nav-toggle:checked ~ .menu {
     display: block;
   }
 
   .menu ul {
+    display: flex;
     flex-direction: column;
-    padding: 12px;
+    align-items: stretch;
+
+    gap: 4px;
+
+    padding: 12px 16px 16px;
   }
+
+  .menu a {
+    padding: 12px 14px;
+    border-radius: 8px;
+  }
+
+  /* Main container widths */
+
+  .hero,
+  .about,
+  .services,
+  .partners,
+  .footer-grid,
+  .copyright {
+    width: calc(100% - 32px);
+  }
+
+  /* Hero */
 
   .hero {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 24px;
+
     padding-top: 36px;
+    padding-bottom: 32px;
   }
 
-  .service-grid,
-  .partner-grid,
+  .hero h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    margin-bottom: 14px;
+  }
+
+  .lede {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-visual {
+    min-height: 0;
+  }
+
+  .hero-visual img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .btn {
+    min-height: 42px;
+    padding: 10px 16px;
+  }
+
+  /* Banner */
+
+  .banner {
+    width: calc(100% - 32px);
+
+    height: auto;
+    aspect-ratio: 16 / 9;
+
+    margin-bottom: 36px;
+  }
+
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* About section */
+
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 24px;
+
+    padding-bottom: 40px;
+  }
+
+  .about-copy,
+  .about-visual {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .about-copy h2 {
+    font-size: 1.55rem;
+  }
+
+  .about-facts {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .about-facts > div {
+    padding: 13px;
+  }
+
+  .about-facts dd {
+    font-size: 0.9rem;
+  }
+
+  /* Mission and Vision */
+
   .mission-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 14px;
+    width: 100%;
   }
 
-  h1 {
-    font-size: 2rem;
+  .mission-grid article {
+    width: 100%;
+    min-width: 0;
+    padding: 16px;
   }
- .about-copy p {
-    color: white;
-    border: 2px solid orange;
-    width: fit-content; /* या width: max-content; */
-    text-align: center;
-    border-radius: 10px;
-    padding: 4px 12px; /* थोड़ा सा पैडिंग देने से यह और अच्छा दिखेगा */
-    white-space: nowrap; /* यह सुनिश्चित करेगा कि टेक्स्ट कभी भी अगली लाइन में न जाए */
+
+  .mission-grid p {
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+  }
+
+  /* GIF appears after Mission and Vision */
+
+  .about-visual {
+    height: auto;
+    align-self: start;
+  }
+
+  .about-visual img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  /* Services */
+
+  .section-head {
+    margin-bottom: 20px;
+  }
+
+  .service-grid {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 16px;
+    padding-bottom: 40px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  /* Sectors */
+
+  .partner-grid {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 14px;
+    padding-bottom: 40px;
+  }
+
+  .partner-card {
+    padding: 18px;
+  }
+
+  /* Footer */
+
+  .footer {
+    padding-top: 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .contact-panel h2 {
+    font-size: 1.4rem;
+  }
+
+  .footer-visual {
+    min-height: 0;
+  }
+
+  .footer-visual img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .copyright {
+    margin-top: 24px;
+    padding-top: 16px;
+    font-size: 0.78rem;
+  }
 }
+
+/* =========================
+   21. SMALL MOBILE DEVICES
+========================= */
+
+@media (max-width: 400px) {
+
+  .header-inner {
+    width: calc(100% - 20px);
+  }
+
+  .hero,
+  .about,
+  .services,
+  .partners,
+  .footer-grid,
+  .copyright {
+    width: calc(100% - 24px);
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-text strong {
+    font-size: 0.78rem;
+  }
+
+  .brand-text span {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-toggle-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero h1 {
+    font-size: 1.85rem;
+  }
+
+  .hero-actions {
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 9px 13px;
+    font-size: 0.85rem;
+  }
+
+  .banner {
+    width: calc(100% - 24px);
+  }
+
+  .about-copy h2 {
+    font-size: 1.4rem;
+  }
+
+  .about-facts > div,
+  .mission-grid article,
+  .card,
+  .partner-card {
+    padding: 14px;
+  }
 }
+
+/* =========================
+   22. REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+```
