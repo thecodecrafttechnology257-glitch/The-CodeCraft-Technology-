@@ -546,4 +546,13 @@ h2 {
   h1 {
     font-size: 2rem;
   }
+  .about-copy p {
+    color: white;
+    border: 2px solid orange;
+    width: fit-content; /* या width: max-content; */
+    text-align: center;
+    border-radius: 10px;
+    padding: 4px 12px; /* थोड़ा सा पैडिंग देने से यह और अच्छा दिखेगा */
+    white-space: nowrap; /* यह सुनिश्चित करेगा कि टेक्स्ट कभी भी अगली लाइन में न जाए */
+}
 }
