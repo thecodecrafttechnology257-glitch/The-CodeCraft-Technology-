@@ -390,7 +390,7 @@ section {
 .btn-ghost {
   background: var(--cyan);
   color: #062b2b;
-  height: 24px;
+  height: 34px;
 }
 
 .btn-ghost:hover,
