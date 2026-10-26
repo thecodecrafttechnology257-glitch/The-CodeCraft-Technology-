@@ -1,4 +1,3 @@
-```css
 /* =========================================================
    THE CODECRAFT TECHNOLOGY
    Complete Responsive Stylesheet
@@ -380,9 +379,7 @@ section {
 .btn-primary {
   background: var(--gold);
   color: #111;
-  
 }
-
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
@@ -411,12 +408,9 @@ section {
 .footer-visual,
 .banner {
   min-width: 0;
-
   overflow: hidden;
-
   border: 1px solid var(--line);
   border-radius: var(--radius);
-
   box-shadow: var(--shadow);
 }
 
@@ -432,21 +426,42 @@ section {
   min-height: 200px;
 }
 
-/* Full-width banner */
+/* =========================
+   MOTION - PICTURE (Premium Pan & Zoom)
+========================= */
 
 .banner {
-  width: min(var(--max), calc(100% - 48px));
-
-  margin: 0 auto 48px;
-
-  height: 350px;
+    /* बराबर स्पेस के लिए */
+    width: min(var(--max), calc(100% - 48px)); 
+    margin-inline: auto; 
+    margin-bottom: 48px;
+    
+    height: 350px;
+    position: relative;
+    border-radius: 12px;
+    
+    /* यह ज़रूरी है ताकि ज़ूम होती इमेज बाहर न निकले */
+    overflow: hidden; 
 }
 
 .banner img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* 20 सेकंड का बहुत ही स्मूद और धीमा एनीमेशन */
+    animation: slowPanZoom 20s ease-in-out infinite alternate;
+}
+
+/* एनीमेशन का डिज़ाइन (Keyframes) */
+@keyframes slowPanZoom {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        /* इमेज 10% ज़ूम इन होगी और थोड़ी सी ऊपर-बाईं तरफ खिसकेगी */
+        transform: scale(1.1) translate(-1.5%, -1.5%); 
+    }
 }
 
 /* =========================
@@ -918,6 +933,7 @@ section {
       repeat(2, minmax(0, 1fr));
   }
 
+  /* Tablet Banner Fix */
   .banner {
     width: calc(100% - 40px);
     height: 240px;
@@ -1034,18 +1050,15 @@ section {
   }
 
   .btn {
-    min-height: 30px;
+    min-height: 42px;
     padding: 10px 16px;
   }
 
-  /* Banner */
-
+  /* Mobile Banner Fix (Spacing & Size) */
   .banner {
     width: calc(100% - 32px);
-
     height: auto;
     aspect-ratio: 16 / 9;
-
     margin-bottom: 36px;
   }
 
@@ -1100,7 +1113,6 @@ section {
     width: 100%;
     min-width: 0;
     padding: 16px;
-    
   }
 
   .mission-grid p {
@@ -1171,7 +1183,7 @@ section {
 
   .footer-visual {
     min-height: 0;
-      } 
+  }
 
   .footer-visual img {
     width: 100%;
@@ -1241,6 +1253,7 @@ section {
     font-size: 0.85rem;
   }
 
+  /* Small Mobile Banner Fix */
   .banner {
     width: calc(100% - 24px);
   }
@@ -1275,4 +1288,3 @@ section {
     animation-iteration-count: 1 !important;
   }
 }
-```
