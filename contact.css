@@ -15,7 +15,7 @@ body {
 /* =========================================================
    HEADER & TITLE
    ========================================================= */
-#header_contact {
+/*#header_contact {
     display: flex;
     width: 100%;
     height: 150px;
@@ -34,6 +34,58 @@ body {
     font-family: sans-serif;
     font-size: 30px;
     text-shadow: 1px 1px 1px #000;
+}*/
+
+/* =========================================================
+   HEADER & TITLE (With Zoom Animation)
+   ========================================================= */
+#header_contact {
+    position: relative; /* ::before को पोज़िशन करने के लिए ज़रूरी है */
+    display: flex;
+    width: 100%;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* ताकि ज़ूम होती इमेज बाहर न निकले */
+    background: #fffff0;
+}
+
+/* यहाँ हमने इमेज को ::before में डाला है */
+#header_contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("CCDB.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0; /* इमेज पीछे रहेगी */
+    
+    /* एनीमेशन का नाम और समय (8 सेकंड) सेट करें */
+    animation: slowZoom 8s ease-in-out infinite alternate;
+}
+
+/* h1 को इमेज के ऊपर दिखाने के लिए */
+#header_contact h1 {
+    position: relative;
+    z-index: 1; /* टेक्स्ट इमेज के ऊपर आएगा */
+    color: red;
+    font-family: sans-serif;
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+/* एनीमेशन की परिभाषा (Keyframes) */
+@keyframes slowZoom {
+    0% {
+        transform: scale(1); /* नॉर्मल साइज़ */
+    }
+    100% {
+        transform: scale(1.15); /* 15% बड़ा हो जाएगा */
+    }
 }
 
 /* =========================================================
