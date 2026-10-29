@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("userform");
   if (!form) return;
 
-  const RECIPIENT = "thecodecrafttechnology257@gmail.com";
-  const ENDPOINT = "https://formsubmit.co/ajax/" + RECIPIENT;
+  //  Formspree का  URL डालें (नीचे वाला हटाकर)
+  const ENDPOINT = "https://formspree.io/f/meaazoln"; 
 
   const els = {
     name: document.getElementById("name"),
@@ -176,20 +176,21 @@ document.addEventListener("DOMContentLoaded", function () {
       body: new FormData(form)
     })
       .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        if (String(data.success).toLowerCase() === "true") {
+        // Formspree का सही रिस्पॉन्स चेक
+        if (response.ok) {
           form.reset();
           clearStates();
           newCaptcha();
           showMessage("Thanks! Your message has been sent. We will reply soon.", false);
         } else {
-          showMessage(data.message || "Something went wrong. Please try again.", true);
+          return response.json().then(function(data) {
+            throw new Error(data.error || "Something went wrong. Please try again.");
+          });
         }
       })
-      .catch(function () {
-        showMessage("Network error. Please check your connection and try again.", true);
+      .catch(function (error) {
+        console.error("Form Submit Error:", error);
+        showMessage(error.message || "Network error. Please check your connection and try again.", true);
       })
       .finally(function () {
         setLoading(false);
